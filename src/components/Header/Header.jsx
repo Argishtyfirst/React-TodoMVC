@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import NewTaskInput from '../NewTaskInput/NewTaskInput';
 
@@ -9,9 +8,5 @@ const Header = ({ onNewTask }) => (
     <NewTaskInput onNewTask={onNewTask} />
   </header>
 );
-
-Header.propTypes = {
-  onNewTask: PropTypes.func.isRequired,
-};
 
 export default Header;

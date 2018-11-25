@@ -22,6 +22,14 @@ class App extends Component {
     }));
   };
 
+  handleDeleteTask = (id) => {
+    const newTaskList = this.state.tasks;
+    const task = newTaskList.filter(task => task.id === id);
+    const index = newTaskList.indexOf(task);
+    newTaskList.splice(index, 1);
+    this.setState({tasks: newTaskList});
+  }
+
   render() {
     const { tasks } = this.state;
 
@@ -29,7 +37,7 @@ class App extends Component {
       <div>
         <section className="todoapp">
           <Header onNewTask={this.handleNewTask} />
-          {tasks.length !== 0 && <Main tasks={tasks} />}
+          {tasks.length !== 0 && <Main tasks={tasks} onDeleteTask={this.handleDeleteTask}/>}
           {tasks.length !== 0 && <Footer />}
         </section>
         <Info />

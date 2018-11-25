@@ -1,20 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import Task from '../Task/Task';
 
-const TodoList = ({ tasks }) => (
+const TodoList = ({ tasks, onDeleteTask }) => (
   <ul className="todo-list">
-    {tasks.map(task => <Task key={task.id} title={task.title} completed={task.completed} />)}
+    {tasks.map(task => <Task key={task.id} taskID={task.id} title={task.title} 
+      completed={task.completed} onDeleteTask={onDeleteTask}/>)}
   </ul>
 );
-
-TodoList.propTypes = {
-  tasks: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired,
-  })).isRequired,
-};
 
 export default TodoList;

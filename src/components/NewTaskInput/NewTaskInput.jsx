@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 class NewTaskInput extends Component {
-  static propTypes = {
-    onNewTask: PropTypes.func.isRequired,
-  };
-
   state = {
     value: '',
   };
