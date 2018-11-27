@@ -1,8 +1,9 @@
 import React from 'react';
 
-const ToggleAll = () => (
+const ToggleAll = ({toggleCompleteTasks}) => (
   <div>
-    <input id="toggle-all" className="toggle-all" type="checkbox" defaultChecked/>
+    <input id="toggle-all" className="toggle-all" type="checkbox" defaultChecked
+      onChange={() => toggleCompleteTasks()} />
     <label htmlFor="toggle-all">Mark all as complete</label>
   </div>
 );

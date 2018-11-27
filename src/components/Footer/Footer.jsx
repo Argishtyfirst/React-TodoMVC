@@ -1,21 +1,25 @@
+import App from '../App/App';
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const Footer = () => (
-  <footer className="footer">
-    <span className="todo-count"><strong>0</strong> item left</span>
-    <ul className="filters">
-      <li>
-        <a href="#/">All</a>
-      </li>
-      <li>
-        <a href="#/active">Active</a>
-      </li>
-      <li>
-        <a href="#/completed">Completed</a>
-      </li>
-    </ul>
-    <button className="clear-completed">Clear completed</button>
-  </footer>
+const Footer = ({activeTaskLength}) => (
+  <Router>
+    <footer className="footer">
+      <span className="todo-count"><strong>{activeTaskLength}</strong> item left</span>
+      <ul className="filters">
+        <li>
+          <Link to="#/">All</Link>
+        </li>
+        <li>
+          <Link to="#/active">Active</Link>
+        </li>
+        <li>
+          <Link to="#/completed">Completed</Link>
+        </li>
+      </ul>
+      <button className="clear-completed">Clear completed</button>
+    </footer>
+  </Router>
 );
 
 export default Footer;
