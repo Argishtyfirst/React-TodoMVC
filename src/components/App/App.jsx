@@ -56,12 +56,18 @@ class App extends Component {
   }
 
   getActiveTasks = () => {
-    return JSON.parse(localStorage.getItem("tasks")).filter(task => task.completed === false);
+    return this.state.tasks.filter(task => task.completed === false);
   }
 
-  toggleCompleteTasks = () => {
+  toggleCompleteTasks = (checked) => {
     const newTasks = this.state.tasks;
-    newTasks.forEach(task => task.completed = true);
+    newTasks.forEach(task => checked ? task.completed = false : task.completed = true);
+    this.setState({tasks: newTasks});
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+  }
+
+  clearCompleted = () => {
+    const newTasks = this.state.tasks.filter(task => task.completed === false);
     this.setState({tasks: newTasks});
     localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
@@ -75,7 +81,8 @@ class App extends Component {
           {tasks.length !== 0 && <Main tasks={tasks} onDeleteTask={this.handleDeleteTask}
             onCompleteTask={this.handleCompleteTask} toggleCompleteTasks={this.toggleCompleteTasks}/>}
           {tasks.length !== 0 && <Footer activeTaskLength={this.getActiveTasks().length} 
-            onActiveTasks={this.handleActiveTasks} onCompleteTasks={this.handleCompleteTasks}/>}
+            onActiveTasks={this.handleActiveTasks} onCompleteTasks={this.handleCompleteTasks}
+            clearCompleted={this.clearCompleted} />}
         </section>
         <Info />
       </div>
